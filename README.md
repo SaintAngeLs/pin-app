@@ -10,16 +10,16 @@ Share Pin allows users to discover and save images, creating personalized collec
 
 Here are some screenshots of the Share Pin application:
 
-![Screenshot 1](./screens/screen1.png)
+![Screenshot 1](./screen/screen1.png)
 *Caption: Login page*
 
-![Screenshot 2](./screens/screen2.png)
+![Screenshot 2](./screen/screen2.png)
 *Caption: Main page with all the images added*
 
-![Screenshot 3](./screens/screen3.png)
+![Screenshot 3](./screen/screen3.png)
 *Caption: User profile page with saved pins and followers*
 
-![Screenshot 4](./screens/screen4.png)
+![Screenshot 4](./screen/screen4.png)
 *Caption: Detailed view of a pin with additional information*
 
 
