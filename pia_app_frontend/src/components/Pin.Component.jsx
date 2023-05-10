@@ -72,8 +72,9 @@ const Pin = ({ pin }) => {
                 <a
                   href={`${image?.asset?.url}?dl=`}
                   download
-                  onClick={(e) => {
-                    e.stopPropagation();
+                  // avoidance changing the following the link of the image name
+                  onClick={(event) => {
+                    event.stopPropagation();
                   }}
                   className="bg-white w-9 h-9 p-2 rounded-full flex items-center justify-center text-dark text-xl opacity-75 hover:opacity-100 hover:shadow-md outline-none"
                 ><MdDownloadForOffline />

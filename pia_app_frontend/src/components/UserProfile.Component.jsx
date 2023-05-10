@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { useParams, useNavigate } from 'react-router-dom';
-import { GoogleLogout } from 'react-google-login';
-
+// for firebase modification logOut:
+// import { GoogleLogout } from 'react-google-login';
 import { userCreatedPinsQuery, userQuery, userSavedPinsQuery } from '../utils/data';
 import { client } from '../client';
 import MasonryLayout from './MasonryLayout.Component';
@@ -46,12 +46,13 @@ const UserProfile = () => {
 
   const logout = () => {
     localStorage.clear();
+   
 
     navigate('/login');
   };
-
+  
   if (!user) return <Spinner message="Loading profile" />;
-
+  //console.log("User.id == ",userId, "User.googleId ==", User.googleId)
   return (
     <div className="relative pb-2 h-full justify-center items-center">
       <div className="flex flex-col pb-5">
@@ -71,23 +72,15 @@ const UserProfile = () => {
           <h1 className="font-bold text-3xl text-center mt-3">
             {user.userName}
           </h1>
-          <div className="absolute top-0 z-1 right-0 p-2">
-            {userId === User.googleId && (
-              <GoogleLogout
-                clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}
-                render={(renderProps) => (
-                  <button
-                    type="button"
-                    className=" bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
-                    onClick={renderProps.onClick}
-                    disabled={renderProps.disabled}
-                  >
-                    <AiOutlineLogout color="red" fontSize={21} />
-                  </button>
-                )}
-                onLogoutSuccess={logout}
-                cookiePolicy="single_host_origin"
-              />
+          <div className="absolute top-0 z-1 right-0 p-2 bg-red">
+            {userId === User.sub && (
+              <button
+              type="button"
+              className=" bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
+              onClick={logout}
+            >
+              <AiOutlineLogout color="red" fontSize={21} />
+            </button>
             )}
           </div>
         </div>
