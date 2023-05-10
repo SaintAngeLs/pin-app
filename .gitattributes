@@ -1,0 +1,18 @@
+# Ensure JS and JSX files are detected
+*.js linguist-detectable=true
+*.jsx linguist-detectable=true
+
+# Ensure CSS files are detected
+*.css linguist-detectable=true
+
+# Ensure HTML files are detected
+*.html linguist-detectable=true
+
+# Ensure JSON files are detected
+*.json linguist-detectable=true
+
+# Ignore build files
+build/* linguist-vendored
+
+# Ignore node_modules
+node_modules/* linguist-vendored
