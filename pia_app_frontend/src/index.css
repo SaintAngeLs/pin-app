@@ -9,3 +9,29 @@ body{
 .hide-scrollbar::-webkit-scrollbar{
     display: none;
 }
+
+.categories-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+  }
+  
+  .show-all-categories {
+    max-height: 600px; /* Set the appropriate height for your needs */
+    transition: max-height 0.5s ease-in-out;
+  }
+  
+  .show-less-categories {
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+  }
+  
+  .show-more-button {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .show-less-button {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }

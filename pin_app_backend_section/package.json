@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "sanity": "^3.12.0",
+    "styled-components": "^5.3.11"
+  }
+}

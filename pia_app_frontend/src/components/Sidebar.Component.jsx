@@ -1,18 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { RiHomeFill } from 'react-icons/ri';
 import { IoIosArrowForward } from 'react-icons/io';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo_new.png';
 import { categories } from '../utils/data';
 
-const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-100 ease-in-out capitalize';
-const isActiveStyle = 'flex items-center px-5 gap-3 font-extrabold border-r-3 border-black  transition-all duration-100 ease-in-out capitalize';
+const isNotActiveStyle = 'flex items-center px-5 py-1 gap-3 text-gray-500 hover:text-black transition-all duration-300 ease-in-out capitalize';
+const isActiveStyle = 'flex items-center px-5 gap-3 font-extrabold border-r-3 border-black  transition-all duration-300 ease-in-out capitalize';
 
 const Sidebar = ({ closeToggle, user }) => {
   const handleCloseSidebar = () => {
     if (closeToggle) closeToggle(false);
   };
+  const [showAllCategories, setShowAllCategories] = useState(false);
 
+  
   return (
     <div className="flex flex-col justify-between bg-white h-full overflow-y-scroll min-w-210 hide-scrollbar">
       <div className="flex flex-col">
@@ -34,17 +36,29 @@ const Sidebar = ({ closeToggle, user }) => {
             Home
           </NavLink>
           <h3 className="mt-2 px-5 text-base 2xl:text-xl">Discover cateogries</h3>
-          {categories.slice(0, categories.length - 1).map((category) => (
-            <NavLink
-              to={`/category/${category.name}`}
-              className={({ isActive }) => (isActive ? isActiveStyle : isNotActiveStyle)}
-              onClick={handleCloseSidebar}
-              key={category.name}
+          <div className={`categories-container ${showAllCategories ? 'show-all-categories' : 'show-less-categories'}`}>
+            {categories.slice(0, showAllCategories ? categories.length : 5).map((category) => (
+              <NavLink
+                to={`/category/${category.name}`}
+                className={({ isActive }) => (isActive ? isActiveStyle : isNotActiveStyle)}
+                onClick={handleCloseSidebar}
+                key={category.name}
+              >
+                <img src={category.image} className="w-8 h-8 rounded-full shadow-sm" alt={category.name} />
+                {category.name}
+              </NavLink>
+            ))}
+          </div>
+          {categories.length >= 5 && (
+            <button
+              className={`flex items-center px-5 gap-3 text-gray-500 hover:text-black capitalize ${
+                showAllCategories ? 'show-less-button' : 'show-more-button'
+              }`}
+              onClick={() => setShowAllCategories(!showAllCategories)}
             >
-              <img src={category.image} className="w-8 h-8 rounded-full shadow-sm" />
-              {category.name}
-            </NavLink>
-          ))}
+              {showAllCategories ? 'Show Less Categories' : 'Show More Categories'}
+            </button>
+          )}
         </div>
       </div>
       {user && (
