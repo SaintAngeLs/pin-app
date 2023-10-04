@@ -16,8 +16,6 @@ Here are some screenshots of the Share Pin application:
 ![Screenshot 2](./screen/screen2.png)
 *Caption: Main page with all the images added*
 
-![Screenshot 3](./screen/screen3.png)
-*Caption: User profile page with saved pins and followers*
 
 ![Screenshot 4](./screen/screen4.png)
 *Caption: Detailed view of a pin with additional information*
